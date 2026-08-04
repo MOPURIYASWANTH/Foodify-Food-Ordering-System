@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" id="WebApp_ID" version="5.0">
+  <display-name>Foodiey</display-name>
+  <welcome-file-list>
+    <welcome-file>restaurant</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.xhtml</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.xhtml</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>RestaurantServlet</servlet-name>
+    <servlet-class>com.food.servlets.Restaurentservlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>RestaurantServlet</servlet-name>
+    <url-pattern>/restaurant</url-pattern>
+</servlet-mapping>
+  <servlet>
+    <servlet-name>MenuServlet</servlet-name>
+    <servlet-class>com.food.servlets.MenuServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>MenuServlet</servlet-name>
+    <url-pattern>/menu</url-pattern>
+</servlet-mapping>
+</web-app>

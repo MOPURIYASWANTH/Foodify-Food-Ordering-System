@@ -6,331 +6,1023 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
+
 <meta charset="UTF-8">
-<title>Order Details</title>
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Foodify - Order Details</title>
 
 <style>
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,Helvetica,sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-body{
-    background:#f5f5f5;
+body {
+    background: #fff7f0;
+    color: #333;
 }
 
-.container{
 
-    width:80%;
-    margin:30px auto;
+/* ================= HEADER ================= */
 
+header {
+
+    height: 75px;
+
+    background: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    box-shadow:
+        0 3px 15px rgba(0,0,0,.08);
 }
 
-h1{
+.logo {
 
-    text-align:center;
-    color:#fc8019;
-    margin-bottom:30px;
+    color: #fc8019;
 
+    font-size: 30px;
+    font-weight: bold;
 }
 
-.card{
+nav {
 
-    display:flex;
-    align-items:center;
+    display: flex;
+    align-items: center;
 
-    background:white;
-
-    padding:20px;
-
-    margin-bottom:15px;
-
-    border-radius:12px;
-
-    box-shadow:0 2px 10px lightgray;
-
+    gap: 28px;
 }
 
-.card img{
+nav a {
 
-    width:120px;
-    height:100px;
+    text-decoration: none;
 
-    border-radius:10px;
+    color: #333;
 
-    margin-right:20px;
+    font-weight: bold;
 
+    transition: .3s;
 }
 
-.details{
+nav a:hover {
 
-    flex:1;
-
+    color: #fc8019;
 }
 
-.details h2{
 
-    color:#333;
+/* ================= PAGE TITLE ================= */
 
+.pageTitle {
+
+    text-align: center;
+
+    padding: 45px 20px 30px;
 }
 
-.price{
+.pageTitle h1 {
 
-    color:#fc8019;
+    font-size: 38px;
 
-    font-weight:bold;
+    color: #333;
 
-    margin-top:10px;
-
+    margin-bottom: 8px;
 }
 
-.bill{
+.pageTitle h1 span {
 
-    background:white;
-
-    padding:20px;
-
-    border-radius:12px;
-
-    box-shadow:0 2px 10px lightgray;
-
-    margin-top:25px;
-
+    color: #fc8019;
 }
 
-.bill table{
+.pageTitle p {
 
-    width:100%;
+    color: #777;
 
+    font-size: 15px;
 }
 
-.bill td{
 
-    padding:10px;
+/* ================= MAIN ================= */
 
+.mainContainer {
+
+    width: 90%;
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.5fr)
+        minmax(320px, .8fr);
+
+    gap: 30px;
+
+    align-items: start;
+
+    padding-bottom: 70px;
 }
 
-.total{
 
-    color:#fc8019;
+/* ================= ORDER SECTION ================= */
 
-    font-size:22px;
+.orderSection {
 
-    font-weight:bold;
+    background: white;
 
+    border-radius: 18px;
+
+    padding: 25px;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.08);
 }
 
-.back{
+.sectionHeading {
 
-    margin-top:25px;
+    display: flex;
+    align-items: center;
 
-    text-align:center;
+    gap: 12px;
 
+    margin-bottom: 20px;
 }
 
-button{
+.sectionIcon {
 
-    padding:12px 25px;
+    width: 43px;
+    height: 43px;
 
-    background:#fc8019;
+    border-radius: 50%;
 
-    color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    border:none;
+    background: #fff1e6;
 
-    border-radius:5px;
-
-    cursor:pointer;
-
+    font-size: 21px;
 }
 
-button:hover{
+.sectionHeading h2 {
 
-    background:#e46e0d;
+    color: #222;
 
+    font-size: 22px;
+}
+
+.sectionHeading p {
+
+    color: #888;
+
+    font-size: 13px;
+
+    margin-top: 3px;
+}
+
+
+/* ================= ITEM CARD ================= */
+
+.itemCard {
+
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 18px 0;
+
+    border-bottom:
+        1px solid #eee;
+
+    transition: .3s;
+}
+
+.itemCard:last-child {
+
+    border-bottom: none;
+}
+
+.itemImage {
+
+    width: 120px;
+    height: 105px;
+
+    flex-shrink: 0;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    background: #f5f5f5;
+}
+
+.itemImage img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: .4s;
+}
+
+.itemCard:hover .itemImage img {
+
+    transform: scale(1.07);
+}
+
+.itemDetails {
+
+    flex: 1;
+}
+
+.itemDetails h2 {
+
+    color: #222;
+
+    font-size: 20px;
+
+    margin-bottom: 8px;
+}
+
+.quantity {
+
+    color: #777;
+
+    font-size: 14px;
+
+    margin-bottom: 8px;
+}
+
+.price {
+
+    color: #fc8019;
+
+    font-size: 17px;
+
+    font-weight: bold;
+}
+
+
+/* ITEM TOTAL */
+
+.itemTotal {
+
+    text-align: right;
+}
+
+.itemTotal p {
+
+    color: #888;
+
+    font-size: 12px;
+
+    margin-bottom: 5px;
+}
+
+.itemTotal strong {
+
+    color: #222;
+
+    font-size: 18px;
+}
+
+
+/* ================= BILL ================= */
+
+.bill {
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.08);
+
+    position: sticky;
+
+    top: 100px;
+}
+
+.bill h2 {
+
+    color: #222;
+
+    font-size: 22px;
+
+    margin-bottom: 22px;
+}
+
+.billRow {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 15px;
+
+    color: #666;
+
+    font-size: 14px;
+}
+
+.billRow span:last-child {
+
+    color: #333;
+
+    font-weight: 500;
+}
+
+.divider {
+
+    border: none;
+
+    border-top: 1px solid #eee;
+
+    margin: 20px 0;
+}
+
+
+/* ================= TOTAL ================= */
+
+.grandTotal {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    margin-bottom: 22px;
+}
+
+.grandTotal span:last-child {
+
+    color: #fc8019;
+
+    font-size: 23px;
+}
+
+
+/* ================= STATUS ================= */
+
+.orderStatus {
+
+    background: #f0fff4;
+
+    border: 1px solid #c7efd2;
+
+    border-radius: 10px;
+
+    padding: 12px;
+
+    text-align: center;
+
+    color: #28a745;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    margin-bottom: 20px;
+}
+
+
+/* ================= BACK BUTTON ================= */
+
+.backButton {
+
+    display: block;
+
+    width: 100%;
+
+    text-align: center;
+
+    padding: 14px;
+
+    background: #fc8019;
+
+    color: white;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    transition: .3s;
+}
+
+.backButton:hover {
+
+    background: #e46e0d;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 18px rgba(252,128,25,.25);
+}
+
+.homeLink {
+
+    display: block;
+
+    text-align: center;
+
+    margin-top: 15px;
+
+    color: #fc8019;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+
+/* ================= EMPTY ================= */
+
+.emptyOrder {
+
+    text-align: center;
+
+    padding: 60px 20px;
+}
+
+.emptyOrder .icon {
+
+    font-size: 65px;
+
+    margin-bottom: 15px;
+}
+
+.emptyOrder h2 {
+
+    color: #333;
+
+    margin-bottom: 10px;
+}
+
+.emptyOrder p {
+
+    color: #777;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width: 900px) {
+
+    .mainContainer {
+
+        grid-template-columns: 1fr;
+    }
+
+    .bill {
+
+        position: static;
+    }
+}
+
+
+@media(max-width: 600px) {
+
+    header {
+
+        padding: 0 20px;
+    }
+
+    .logo {
+
+        font-size: 24px;
+    }
+
+    nav {
+
+        gap: 12px;
+    }
+
+    nav a {
+
+        font-size: 13px;
+    }
+
+    .pageTitle h1 {
+
+        font-size: 30px;
+    }
+
+    .orderSection {
+
+        padding: 18px;
+    }
+
+    .itemCard {
+
+        align-items: flex-start;
+    }
+
+    .itemImage {
+
+        width: 90px;
+        height: 85px;
+    }
+
+    .itemDetails h2 {
+
+        font-size: 17px;
+    }
+
+    .itemTotal {
+
+        display: none;
+    }
 }
 
 </style>
 
 </head>
 
+
 <body>
 
-<div class="container">
 
-<h1>Order Details</h1>
+<!-- ================= HEADER ================= -->
+
+<header>
+
+
+    <div class="logo">
+
+        🍔 Foodify
+
+    </div>
+
+
+    <nav>
+
+        <a href="restaurant">
+            Home
+        </a>
+
+        <a href="favorites">
+            ❤️ Favorites
+        </a>
+
+        <a href="myOrders">
+            My Orders
+        </a>
+
+    </nav>
+
+
+</header>
+
+
+<!-- ================= TITLE ================= -->
+
+<div class="pageTitle">
+
+
+    <h1>
+
+        Order <span>Details</span> 📦
+
+    </h1>
+
+
+    <p>
+
+        Review your ordered items and complete bill details
+
+    </p>
+
+
+</div>
+
 
 <%
 
-List<OrderItem> items=(List<OrderItem>)request.getAttribute("orderItems");
+List<OrderItem> items =
+    (List<OrderItem>)
+    request.getAttribute("orderItems");
 
-double itemTotal=0;
-
-for(OrderItem item:items){
-
-double total=item.getPrice()*item.getQuantity();
-
-itemTotal+=total;
+double itemTotal = 0;
 
 %>
 
-<div class="card">
 
-<img src="<%=item.getImagePath()%>">
+<div class="mainContainer">
 
-<div class="details">
 
-<h2><%=item.getItemName()%></h2>
+<!-- =================================================
+                  LEFT SIDE
+================================================== -->
 
-<p>Quantity : <%=item.getQuantity()%></p>
 
-<p class="price">
+<div class="orderSection">
 
-₹ <%=item.getPrice()%>
 
-</p>
+    <div class="sectionHeading">
 
-<p>
 
-Total : ₹ <%=total%>
+        <div class="sectionIcon">
 
-</p>
+            🍽️
+
+        </div>
+
+
+        <div>
+
+            <h2>
+                Ordered Items
+            </h2>
+
+            <p>
+                Items included in this order
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+<%
+
+if(items != null && !items.isEmpty()) {
+
+
+    for(OrderItem item : items) {
+
+
+        double total =
+            item.getPrice()
+            * item.getQuantity();
+
+
+        itemTotal += total;
+
+%>
+
+
+<!-- ================= ITEM ================= -->
+
+
+<div class="itemCard">
+
+
+    <div class="itemImage">
+
+
+        <img
+            src="<%=item.getImagePath()%>"
+            alt="<%=item.getItemName()%>">
+
+
+    </div>
+
+
+    <div class="itemDetails">
+
+
+        <h2>
+
+            <%=item.getItemName()%>
+
+        </h2>
+
+
+        <div class="quantity">
+
+            Quantity:
+            <strong>
+                <%=item.getQuantity()%>
+            </strong>
+
+        </div>
+
+
+        <div class="price">
+
+            ₹ <%=String.format("%.2f",
+                    item.getPrice())%>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="itemTotal">
+
+
+        <p>
+            Item Total
+        </p>
+
+
+        <strong>
+
+            ₹ <%=String.format("%.2f",
+                    total)%>
+
+        </strong>
+
+
+    </div>
+
 
 </div>
 
+
+<%
+
+    }
+
+}
+else {
+
+%>
+
+
+<!-- ================= EMPTY ================= -->
+
+
+<div class="emptyOrder">
+
+
+    <div class="icon">
+
+        📦
+
+    </div>
+
+
+    <h2>
+
+        No Order Items Found
+
+    </h2>
+
+
+    <p>
+
+        We couldn't find items for this order.
+
+    </p>
+
+
 </div>
+
 
 <%
 
 }
 
-double gst=itemTotal*0.05;
+%>
 
-double packing=20;
 
-double delivery=40;
+</div>
 
-double platform=10;
 
-double restaurantCharge=15;
+<!-- =================================================
+                   BILL DETAILS
+================================================== -->
 
-double finalAmount=itemTotal+gst+packing+delivery+platform+restaurantCharge;
+
+<%
+
+double gst =
+    itemTotal * 0.05;
+
+double packing = 20;
+
+double delivery = 40;
+
+double platform = 10;
+
+double restaurantCharge = 15;
+
+
+double finalAmount =
+    itemTotal
+    + gst
+    + packing
+    + delivery
+    + platform
+    + restaurantCharge;
 
 %>
 
+
 <div class="bill">
 
-<h2 style="color:#fc8019;">Bill Details</h2>
 
-<table>
+    <h2>
 
-<tr>
+        Bill Details
 
-<td>Item Total</td>
+    </h2>
 
-<td align="right">
 
-₹ <%=itemTotal%>
+    <div class="billRow">
 
-</td>
 
-</tr>
+        <span>
+            Item Total
+        </span>
 
-<tr>
 
-<td>GST (5%)</td>
+        <span>
 
-<td align="right">
+            ₹ <%=String.format("%.2f",
+                    itemTotal)%>
 
-₹ <%=gst%>
+        </span>
 
-</td>
 
-</tr>
+    </div>
 
-<tr>
 
-<td>Packing Charges</td>
+    <div class="billRow">
 
-<td align="right">
 
-₹ <%=packing%>
+        <span>
+            GST (5%)
+        </span>
 
-</td>
 
-</tr>
+        <span>
 
-<tr>
+            ₹ <%=String.format("%.2f",
+                    gst)%>
 
-<td>Delivery Fee</td>
+        </span>
 
-<td align="right">
 
-₹ <%=delivery%>
+    </div>
 
-</td>
 
-</tr>
+    <div class="billRow">
 
-<tr>
 
-<td>Platform Fee</td>
+        <span>
+            Packing Charges
+        </span>
 
-<td align="right">
 
-₹ <%=platform%>
+        <span>
 
-</td>
+            ₹ <%=String.format("%.2f",
+                    packing)%>
 
-</tr>
+        </span>
 
-<tr>
 
-<td>Restaurant Charges</td>
+    </div>
 
-<td align="right">
 
-₹ <%=restaurantCharge%>
+    <div class="billRow">
 
-</td>
 
-</tr>
+        <span>
+            Delivery Fee
+        </span>
 
-<tr class="total">
 
-<td>Grand Total</td>
+        <span>
 
-<td align="right">
+            ₹ <%=String.format("%.2f",
+                    delivery)%>
 
-₹ <%=finalAmount%>
+        </span>
 
-</td>
 
-</tr>
+    </div>
 
-</table>
+
+    <div class="billRow">
+
+
+        <span>
+            Platform Fee
+        </span>
+
+
+        <span>
+
+            ₹ <%=String.format("%.2f",
+                    platform)%>
+
+        </span>
+
+
+    </div>
+
+
+    <div class="billRow">
+
+
+        <span>
+            Restaurant Charges
+        </span>
+
+
+        <span>
+
+            ₹ <%=String.format("%.2f",
+                    restaurantCharge)%>
+
+        </span>
+
+
+    </div>
+
+
+    <hr class="divider">
+
+
+    <div class="grandTotal">
+
+
+        <span>
+
+            Grand Total
+
+        </span>
+
+
+        <span>
+
+            ₹ <%=String.format("%.2f",
+                    finalAmount)%>
+
+        </span>
+
+
+    </div>
+
+
+    <div class="orderStatus">
+
+        ✓ Order Details Available
+
+    </div>
+
+
+    <a
+        href="myOrders"
+        class="backButton">
+
+        ← Back To My Orders
+
+    </a>
+
+
+    <a
+        href="restaurant"
+        class="homeLink">
+
+        Continue Exploring Restaurants
+
+    </a>
+
 
 </div>
 
-<div class="back">
-
-<a href="myOrders">
-
-<button>
-
-Back To My Orders
-
-</button>
-
-</a>
 
 </div>
 
-</div>
 
 </body>
+
 </html>

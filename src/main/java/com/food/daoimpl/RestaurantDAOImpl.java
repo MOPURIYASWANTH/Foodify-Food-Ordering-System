@@ -177,4 +177,80 @@ public class RestaurantDAOImpl implements RestaurantDAO {
             e.printStackTrace();
         }
     }
+    @Override
+    public List<Restaurant> searchRestaurantsByFood(String foodName) {
+
+        List<Restaurant> restaurants = new ArrayList<>();
+
+        String sql =
+            "SELECT DISTINCT " +
+            "r.restaurantId, " +
+            "r.restaurantName, " +
+            "r.cuisineType, " +
+            "r.address, " +
+            "r.phone, " +
+            "r.rating, " +
+            "r.isActive, " +
+            "r.imagePath " +
+            "FROM restaurant r " +
+            "JOIN menu m " +
+            "ON r.restaurantId = m.restaurantId " +
+            "WHERE m.itemName LIKE ? " +
+            "AND r.isActive = 1";
+
+        try (
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql)
+        ) {
+
+            ps.setString(1, "%" + foodName + "%");
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                Restaurant restaurant = new Restaurant();
+
+                restaurant.setRestaurantId(
+                    rs.getInt("restaurantId")
+                );
+
+                restaurant.setRestaurantName(
+                    rs.getString("restaurantName")
+                );
+
+                restaurant.setCuisineType(
+                    rs.getString("cuisineType")
+                );
+
+                restaurant.setAddress(
+                    rs.getString("address")
+                );
+
+                restaurant.setPhone(
+                    rs.getString("phone")
+                );
+
+                restaurant.setRating(
+                    rs.getDouble("rating")
+                );
+
+                restaurant.setActive(
+                	    rs.getBoolean("isActive")
+                	);
+
+                restaurant.setImagePath(
+                    rs.getString("imagePath")
+                );
+
+                restaurants.add(restaurant);
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+
+        return restaurants;
+    }
 }

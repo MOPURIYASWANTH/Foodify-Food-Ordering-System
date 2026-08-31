@@ -29,7 +29,7 @@ if(user == null){
 
 body{
 
-    background:#f5f5f5;
+    background:#fff7f0;
     display:flex;
     justify-content:center;
     align-items:center;

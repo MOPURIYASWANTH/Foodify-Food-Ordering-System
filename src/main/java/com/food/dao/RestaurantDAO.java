@@ -14,4 +14,6 @@ public interface RestaurantDAO {
     void updateRestaurant(Restaurant restaurant);
 
     void deleteRestaurant(int restaurantId);
+    
+    List<Restaurant> searchRestaurantsByFood(String foodName);
 }
